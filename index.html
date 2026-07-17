@@ -204,6 +204,7 @@
         .video-info h3 { font-size: 1.2rem; margin-bottom: 1rem; }
 
         /* === GEAR GRID (LIQUID GLASS) === */
+
         .gear-list {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 1.5rem; padding: 2rem; 
@@ -219,12 +220,13 @@
             padding: 2.5rem 1.5rem; border-radius: 12px; text-align: center; 
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
+
         .gear-item:hover { 
             transform: translateY(-5px); border-color: rgba(255, 69, 0, 0.4); 
             box-shadow: 0 12px 30px rgba(255, 69, 0, 0.15);
         }
         .gear-item h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;}
-        .gear-item p { color: var(--text-light); font-weight: 600; font-size: 1.3rem;}
+        .gear-item p { color: var(--text-light); font-weight: 600; font-size: 0.8rem;}
 
         /* === ABOUT SECTION === */
         .about-wrapper { display: flex; gap: 4rem; align-items: center; margin-bottom: 4rem; }
@@ -516,7 +518,7 @@
 
                 <div class="video-card">
                     <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
-                        <source src="https://file.garden/alobvR3uVGmzbBN6/many reach_ad.mp4" type="video/mp4">
+                        <source src="https://file.garden/alobvR3uVGmzbBN6/manyreach_ad.mp4" type="video/mp4">
                     </video>
                     <div class="video-info">
                         <h3>Manyreach Advertisement</h3>
@@ -562,18 +564,32 @@
             
             <div class="video-grid reveal" style="margin-bottom: 2rem;">
                 <div class="video-card">
-                    <img src="https://images.unsplash.com/photo-1528114039593-4366cc08227d?q=80&w=1200&auto=format&fit=crop" alt="Videography Project">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="https://file.garden/alobvR3uVGmzbBN6/WEDDING_VIDEO_FINAL.mp4" type="video/mp4">
+                    </video>
                     <div class="video-info">
-                        <h3>Event Coverage (Placeholder)</h3>
-                        <a href="#" class="btn-small">Watch Here</a>
+                        <h3>KERR & JOCEL Wedding Highlight</h3>
+                        <a href="https://www.facebook.com/reel/881995548244832/?s=single_unit" target="_blank" class="btn-small">Watch Here</a>
                     </div>
                 </div>
 
                 <div class="video-card">
-                    <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=1200&auto=format&fit=crop" alt="Documentary Project">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="https://file.garden/alobvR3uVGmzbBN6/AQN57d1avA1TbSKeezYHwqr-f14lz1bL-tmT25TGliO2KjE-5zJWdEILt9Kxbg2Xa2THBE2h4O8-FXjpAELNEZ_rdo_Seagt7Lqv3dbpm0wBFQ.mp4" type="video/mp4">
+                    </video>
                     <div class="video-info">
-                        <h3>Documentary (Placeholder)</h3>
-                        <a href="#" class="btn-small">Watch Here</a>
+                        <h3>COLLIN & EARL Wedding Highlight</h3>
+                        <a href="https://www.facebook.com/reel/1789387878747631" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="https://file.garden/alobvR3uVGmzbBN6/AQOby30oNmzvtMfefhtjLPhPd8bh__EHaI3UHQCPW1mC6YneNBF_lxB7y7uVMj_bFMJBCpXJaEV9eCNNc_NH3D5ClXwwV0-y5A1mTUD1CHxe1g.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Silfira x The Everlasts Highlight</h3>
+                        <a href="https://www.tiktok.com/@masutamat" target="_blank" class="btn-small">Watch Here</a>
                     </div>
                 </div>
 
@@ -605,23 +621,31 @@
                             </div>
                             <div class="gear-item">
                                 <h3>Lenses</h3>
-                                <p>7Artisans 35mm T2.1 HOPE Cine Lens</p>
+                                <p>7Artisans 35mm t2.1 HOPE Cine</p>
+                                <p>7Artisans 25mm f1.8 Manual</p>
+                                <p>7Artisans 50mm f1.8 Manual</p>
+                                <p>Sigma 30mm DN Art f2.8</p>
                             </div>
                             <div class="gear-item">
                                 <h3>Lighting</h3>
-                                <p>TBA</p>
+                                <p class="gear-description">Ulanzi LO24 40W RGB</p>
+                                <p class="gear-description">2x 300W Bi-Color Studio Lights</p>
+                                <p class="gear-description">Tofu Light</p>
                             </div>
                             <div class="gear-item">
                                 <h3>Microphones</h3>
-                                <p>TBA</p>
+                                <p class="gear-description">Comica VM30 Wireless Shotgun Microphone</p>
+                                <p class="gear-description">Godox Magic XT1 Omnidirectional Microphone</p>
                             </div>
                             <div class="gear-item">
                                 <h3>Gimbal</h3>
-                                <p>DJI RS 3 Mini</p>
+                                <p class="gear-description">DJI RS 4 Mini</p>
                             </div>
                             <div class="gear-item">
                                 <h3>Miscellaneous</h3>
-                                <p>TBA</p>
+                                <p class="gear-description">Telesin Portable Smoke Machine</p>
+                                <p class="gear-description">Neewer 60cm Camera Slider</p>
+                                <p class="gear-description">Ulanzi U-Select VT-02 Lightweight Portable Tripod</p>
                             </div>
                         </div>
                     </div>
@@ -640,7 +664,7 @@
                     <p>I am passionate about digital arts, especially when it comes to photography, filmmaking, and illustration. It captivates me to make art that tells stories and memories. Also, it is fun to make some cool things.</p>
                     <p>Feel free to contact me whenever you want at <a href="mailto:matthewjobmendoza09@gmail.com" style="color: var(--accent); text-decoration: underline;">matthewjobmendoza09@gmail.com</a></p>
                     <br>
-                    <a href="https://ortigascaintasti-my.sharepoint.com/:b:/g/personal/estacio_125103_ortigas-cainta_sti_edu_ph/IQBvQek4E-vSSLYq69nuU9JTAak3zebpQjf7TV5IkYWzDGg?e=FxS9Wi" target="_blank" class="btn">Download Resume</a>
+                    <a href="https://drive.google.com/file/d/1Og8nu9XMjAPxAAnUu9cNSf1AQQ1OusKT/view?usp=sharing" target="_blank" class="btn">Download Resume</a>
                 </div>
             </div>
 
@@ -675,7 +699,7 @@
             <h2 style="margin-bottom: 2rem; text-align: center; font-weight: 800; font-size: 2rem;">Let's Connect</h2>
             <div class="contact-grid">
                 
-                <a href="https://facebook.com/matthewjob" target="_blank" class="contact-btn">
+                <a href="https://www.facebook.com/masutamat/" target="_blank" class="contact-btn">
                     <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                     </svg>
