@@ -8,6 +8,7 @@
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/662dbfd215b645c24d07543f_logo_MM_2.png">
 
     <style>
         /* === CSS VARIABLES & RESET === */
@@ -29,7 +30,7 @@
 
         /* === PAGE LOAD ANIMATIONS === */
         .page-wrapper {
-            animation: blurReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: blurReveal 4.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         @keyframes blurReveal {
@@ -89,7 +90,7 @@
         }
 
         .hero-content { z-index: 1; max-width: 800px; animation: fadeIn 1.5s ease 0.5s both; }
-        .hero-logo { width: 60px; margin-bottom: 1.5rem; }
+        .hero-logo { width: 60px; margin-bottom: 1.5rem; border-radius: 50%; }
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
         .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
         
@@ -367,13 +368,38 @@
             <h1 class="section-title title-reveal">Filmmaking & Cinematography</h1>
 
             <div class="featured-film reveal">
+                <img src="https://scontent.fmnl4-4.fna.fbcdn.net/v/t39.30808-6/703880538_1430569985755338_2009786380869621475_n.jpg?stp=dst-jpg_tt6&cstp=mx1382x2048&ctp=s1382x2048&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFaExaL_JPR9z38toEd4h_JctvBwT9eTlRy28HBP15OVOMZNFa9FNubk6-pX1MK2T2qz9wDWHGBzcCyTllXpg7r&_nc_ohc=Y-U_O39uTJwQ7kNvwHHdVhn&_nc_oc=Ado_m_IpqIr1b6dLLV72FJd082c6sjajIgM-sYFhio4t-vqlcRk0lKec7SxNHSCz1eMAg0BIEG-xVhynYIOd9lK3&_nc_zt=23&_nc_ht=scontent.fmnl4-4.fna&_nc_gid=Ej9Y5ipWmJqUYrqiStQS5g&_nc_ss=7b2a8&oh=00_AQDG3Rtji7WEm1PgH0ZsPThXG2_OL2A-LOwu4UF9TRf6tw&oe=6A5DD6C4" alt="Samuel's Days">
+                <div class="featured-info">
+                    <h2>Samuel's Days (2026)</h2>
+                    <span class="award">CineSTIval 2026 | Best Picture, Best Cinematography, Best Original Screenplay, Best Film Editing, Best Production Design, and Best Casting</span>
+                    <p><strong>Co-director / Cinematographer / Film Editor / Colorist:</strong> Matthew Job Estacio (masutamat)</p>
+                    <button class="btn-small toggle-stills" onclick="toggleDropdown('samuel-stills', this)">View Stills <span class="toggle-icon">▾</span></button>
+                </div>
+                
+                <div id="samuel-stills" class="stills-wrapper">
+                    <div class="stills-inner">
+                        <div class="slideshow-viewport">
+                            <div class="slideshow-track" id="track-samuel-stills">
+                                <div class="slide">
+                                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1200&auto=format&fit=crop" alt="Still 1"></div>
+                                <div class="slide">
+                                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop" alt="Still 2"></div>
+                                <div class="slide">
+                                    <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1200&auto=format&fit=crop" alt="Still 3"></div>
+                            </div>
+                            <a class="prev" onclick="moveSlide(-1, 'samuel-stills')">❮</a>
+                            <a class="next" onclick="moveSlide(1, 'samuel-stills')">❯</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-film reveal">
                 <img src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/692da5c1c1ad0cbab032f516_Zenith%20Production.png" alt="Dito at Doon">
                 <div class="featured-info">
-                    <h2>Dito at Doon</h2>
-                    <span class="award">Director's Cut 2025 | 1st Place Locals Champion, 4th Runner-up Nationals</span>
-                    <p><strong>Director:</strong> Yaz Rohann Barrameda</p>
-                    <p><strong>Cinematographer / Editor / Colorist:</strong> Matthew Job Estacio (masutamat)</p>
-                    <p><strong>Writer:</strong> Andy Napay</p>
+                    <h2>Dito at Doon (2025)</h2>
+                    <span class="award">Director's Cut 2025 | 1st Place Locals Champion & 4th Runner-up Nationals</span>
+                    <p><strong>Cinematographer / Film Editor / Colorist:</strong> Matthew Job Estacio (masutamat)</p>
                     <button class="btn-small toggle-stills" onclick="toggleDropdown('dito-stills', this)">View Stills <span class="toggle-icon">▾</span></button>
                 </div>
                 
@@ -395,9 +421,8 @@
             <div class="featured-film reveal">
                 <img src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/68224b1494e8250930c92d60_462553451_1210773636665501_7296847046707483915_n.png" alt="PABAON">
                 <div class="featured-info">
-                    <h2>PABAON</h2>
-                    <span class="award">MMFF x FDCP Student Short Film Competition | 2024 Nominee</span>
-                    <p><strong>Director:</strong> Desiree Anne De Belen</p>
+                    <h2>PABAON (2024)</h2>
+                    <span class="award">MMFF x FDCP Student Short Film Competition | Finalist</span>
                     <p><strong>Camera Operator:</strong> Matthew Job Estacio (masutamat)</p>
                     <button class="btn-small toggle-stills" onclick="toggleDropdown('pabaon-stills', this)">View Stills <span class="toggle-icon">▾</span></button>
                 </div>
@@ -419,9 +444,9 @@
             <div class="featured-film reveal">
                 <img src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/686e9c0923a7f380e97d84a8_Aninag%20with%20award.png" alt="ANINAG">
                 <div class="featured-info">
-                    <h2>ANINAG</h2>
+                    <h2>ANINAG (2025)</h2>
                     <span class="award">Arts & Sciences Film Festival 2025 | Best Film Editing</span>
-                    <p><strong>Director / Cinematographer / Editor:</strong> Matthew Job Estacio (masutamat)</p>
+                    <p><strong>Co-director / Cinematographer / Film Editor / Colorist:</strong> Matthew Job Estacio (masutamat)</p>
                     <button class="btn-small toggle-stills" onclick="toggleDropdown('aninag-stills', this)">View Stills <span class="toggle-icon">▾</span></button>
                 </div>
 
@@ -468,7 +493,7 @@
         
         <!-- VIDEO EDITING SECTION -->
         <section id="video-edit" class="section">
-            <h1 class="section-title title-reveal">Video Editing</h1>
+            <h1 class="section-title title-reveal">Video Editing & Motion Graphics</h1>
             
             <div class="video-grid reveal">
                 <div class="video-card">
@@ -493,11 +518,41 @@
 
                 <div class="video-card">
                     <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
-                        <source src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_mp4.mp4" type="video/mp4">
+                        <source src="videos/manyreach_ad.mp4" type="video/mp4">
                     </video>
                     <div class="video-info">
-                        <h3>Anker Soundcore Liberty 5 (Short)</h3>
-                        <a href="https://www.tiktok.com/@masutamat" target="_blank" class="btn-small">Watch Here</a>
+                        <h3>Manyreach Advertisement</h3>
+                        <a href="https://drive.google.com/file/d/1gM8jzvXD4HV2uWzxNof5m8HOnzf4J5Tv/view?usp=share_link" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="videos/dsh_richmond.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Digital Social Hour</h3>
+                        <a href="https://drive.google.com/file/d/1t0-nswFfN19u36b22zFQ7vhpBPdVvc80/view?usp=sharing" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="videos/cactus_recruitment.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Cactus Recruitment</h3>
+                        <a href="https://drive.google.com/file/d/1FkUY_AkG7xAETG4lkxDH3D6AVVPUlPXZ/view?usp=sharing" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="videos/finestfive_0114.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Finest Five Video Project</h3>
+                        <a href="https://drive.google.com/file/d/15mQGwlEVEWkTvRy4EmyI2v1WQXKt45CI/view?usp=share_link" target="_blank" class="btn-small">Watch Here</a>
                     </div>
                 </div>
             </div>
@@ -505,7 +560,7 @@
 
         <!-- VIDEOGRAPHY SECTION -->
         <section id="videography" class="section">
-            <h1 class="section-title title-reveal">Videography</h1>
+            <h1 class="section-title title-reveal">Videography & Content Creation</h1>
             
             <div class="video-grid reveal" style="margin-bottom: 2rem;">
                 <div class="video-card">
@@ -515,6 +570,7 @@
                         <a href="#" class="btn-small">Watch Here</a>
                     </div>
                 </div>
+
                 <div class="video-card">
                     <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=1200&auto=format&fit=crop" alt="Documentary Project">
                     <div class="video-info">
@@ -522,7 +578,19 @@
                         <a href="#" class="btn-small">Watch Here</a>
                     </div>
                 </div>
+
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_mp4.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Anker Soundcore Liberty 5 (Short)</h3>
+                        <a href="https://www.tiktok.com/@masutamat" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
             </div>
+            
 
             <!-- Camera Equipment Dropdown -->
             <div class="reveal">
