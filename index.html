@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>masutamat Projects</title>
+    <meta name="description" content="Explore the creative portfolio of masutamat (Matthew Job Estacio). Specializing in award-winning filmmaking, video editing, photography, and motion graphics.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/662dbfd215b645c24d07543f_logo_MM_2.png">
+
+    <style>
+        /* === CSS VARIABLES & RESET === */
+        :root {
+            --bg-dark: #0a0a0a;
+            --text-light: #ffffff;
+            --text-muted: #a3a3a3;
+            --accent: #ff4500;
+            --nav-bg: rgba(10, 10, 10, 0.85);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            line-height: 1.6; 
+        }
+
+        /* === PAGE LOAD ANIMATIONS === */
+        .page-wrapper {
+            animation: blurReveal 4.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes blurReveal {
+            0% { filter: blur(20px); opacity: 0; transform: scale(1.02); }
+            100% { filter: blur(0); opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes navReveal {
+            0% { filter: blur(20px); opacity: 0; }
+            100% { filter: blur(0); opacity: 1; }
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* === NAVBAR === */
+        .navbar {
+            position: fixed; top: 0; width: 100%;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 5%; background: var(--nav-bg);
+            backdrop-filter: blur(10px); z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            animation: navReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .navbar.nav-hidden { transform: translateY(-100%); }
+        .nav-brand { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-weight: 600; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* === HERO SECTION === */
+        .hero {
+            position: relative; height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; overflow: hidden; padding: 0 5%;
+        }
+        
+        .hero-video {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: -2; 
+            filter: brightness(0.5) blur(2px);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+        }
+
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 35%;
+            background: linear-gradient(to bottom, rgba(10,10,10,0) 0%, rgba(10,10,10,1) 100%);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%);
+            z-index: -1;
+        }
+
+        .hero-content { z-index: 1; max-width: 800px; animation: fadeIn 1.5s ease 0.5s both; }
+        .hero-logo { width: 60px; margin-bottom: 1.5rem; border-radius: 50%; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
+        
+        .hero-actions { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+
+        /* === LIQUID GLASS BUTTON STYLES === */
+        .btn, .btn-glass, .btn-small, .prev, .next {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(20px) saturate(140%);
+            -webkit-backdrop-filter: blur(20px) saturate(140%);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            border-left: 1px solid rgba(255, 255, 255, 0.4);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            color: #fff;
+        }
+
+        .btn, .btn-glass {
+            display: inline-flex; align-items: center; justify-content: center; 
+            padding: 15px 35px; font-weight: 800; border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        
+        /* Outline variant for the showreel button */
+        .btn-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:hover, .btn-glass:hover { 
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+            transform: translateY(-3px) scale(1.02); cursor: pointer; 
+            box-shadow: 0 12px 40px 0 rgba(255, 69, 0, 0.3); 
+            border-color: rgba(255, 69, 0, 0.4);
+        }
+
+        .btn-small {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 20px; border-radius: 30px; 
+            font-size: 0.9rem; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+            cursor: pointer; margin-top: 1rem;
+        }
+        .btn-small:hover { 
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.3); 
+            border-color: rgba(255, 69, 0, 0.4);
+        }
+        
+        .toggle-icon { display: inline-block; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+        .active-btn .toggle-icon { transform: rotate(180deg); }
+
+        /* === SECTIONS & GRIDS === */
+        .section { padding: 6rem 5%; max-width: 1400px; margin: 0 auto; }
+        
+        .section-title { 
+            font-size: clamp(2.5rem, 4vw, 3.5rem); 
+            font-weight: 800; margin-bottom: 8rem; 
+            border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem; 
+        }
+
+        /* Featured Film Block */
+        .featured-film { display: flex; flex-wrap: wrap; gap: 3rem; margin-bottom: 5rem; align-items: flex-start; }
+        .featured-film > img { width: 100%; max-width: 300px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .featured-info { flex: 1; min-width: 300px; }
+        .featured-info h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .featured-info .award { color: var(--accent); font-weight: 600; margin-bottom: 1rem; display: block; }
+        .featured-info p { color: var(--text-muted); margin-bottom: 0.5rem; }
+
+        /* === DROPDOWN ACCORDION WRAPPER === */
+        .stills-wrapper {
+            flex-basis: 100%; 
+            display: grid; grid-template-rows: 0fr;
+            transition: grid-template-rows 0.7s cubic-bezier(0.25, 1, 0.3, 1), opacity 0.5s ease;
+            opacity: 0; visibility: hidden;
+        }
+        .stills-wrapper.active { grid-template-rows: 1fr; opacity: 1; visibility: visible; margin-top: 1.5rem; }
+        .stills-inner { overflow: hidden; }
+        
+        /* Slideshow Specific */
+        .slideshow-viewport {
+            max-width: 900px; position: relative; margin: auto; border-radius: 12px;
+            overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6); background: #111;
+        }
+        .slideshow-track { display: flex; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); width: 100%; }
+        .slide { flex: 0 0 100%; width: 100%; }
+        .slide img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+        
+        .prev, .next {
+            cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+            width: 50px; height: 50px; display: flex; justify-content: center; align-items: center;
+            font-weight: bold; font-size: 18px;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); user-select: none; 
+            border-radius: 50%;
+        }
+        .prev { left: 15px; } .next { right: 15px; }
+        .prev:hover, .next:hover { 
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.3); 
+            border-color: rgba(255, 69, 0, 0.4);
+        }
+
+        /* Video Grid */
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        .video-card { background: #151515; border-radius: 12px; overflow: hidden; transition: transform 0.3s; position: relative; }
+        .video-card:hover { transform: translateY(-10px); }
+        .video-card video, .video-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .video-info { padding: 1.5rem; text-align: center; }
+        .video-info h3 { font-size: 1.2rem; margin-bottom: 1rem; }
+
+        /* === GEAR GRID (LIQUID GLASS) === */
+        .gear-list {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 1.5rem; padding: 2rem; 
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.8), rgba(10, 10, 10, 0.9));
+            border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); 
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .gear-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2); border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-right: 1px solid rgba(255, 255, 255, 0.02); border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 2.5rem 1.5rem; border-radius: 12px; text-align: center; 
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .gear-item:hover { 
+            transform: translateY(-5px); border-color: rgba(255, 69, 0, 0.4); 
+            box-shadow: 0 12px 30px rgba(255, 69, 0, 0.15);
+        }
+        .gear-item h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;}
+        .gear-item p { color: var(--text-light); font-weight: 600; font-size: 1.3rem;}
+
+        /* === ABOUT SECTION === */
+        .about-wrapper { display: flex; gap: 4rem; align-items: center; margin-bottom: 4rem; }
+        .about-wrapper img { width: 100%; max-width: 400px; border-radius: 15px; }
+        .about-text h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+        .about-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
+        
+        .mission-vision { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: #111; padding: 3rem; border-radius: 15px; }
+        .mission-vision h3 { color: var(--accent); font-size: 1.8rem; margin-bottom: 1rem; }
+
+        /* === MODALS & POPUPS (LIQUID GLASS) === */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 2000; display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        
+        .modal-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2); border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-right: 1px solid rgba(255, 255, 255, 0.02); border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            border-radius: 20px; padding: 2.5rem; position: relative;
+            transform: scale(0.95) translateY(20px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            max-width: 90%; width: 450px;
+        }
+        .modal-overlay.active .modal-content { transform: scale(1) translateY(0); }
+        
+        .showreel-content { 
+            width: 1000px; max-width: 95%; padding: 0; 
+            aspect-ratio: 16/9; display: flex; 
+        }
+        .showreel-content iframe { width: 100%; height: 100%; border-radius: 20px; }
+        
+        .close-modal {
+            position: absolute; top: 15px; right: 15px; z-index: 10;
+            background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: white;
+            width: 35px; height: 35px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: 0.3s; backdrop-filter: blur(10px);
+        }
+        .close-modal:hover { background: rgba(255,69,0,0.8); transform: scale(1.1); }
+
+        /* Contact Grid inside Modal */
+        .contact-grid { display: flex; flex-direction: column; gap: 1rem; }
+        .contact-btn {
+            display: flex; align-items: center; gap: 15px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
+            border-top: 1px solid rgba(255, 255, 255, 0.2); border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-right: 1px solid rgba(255, 255, 255, 0.02); border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 15px 20px; border-radius: 12px; font-weight: 600; font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); color: #fff;
+        }
+        .contact-btn:hover {
+            transform: translateX(8px); 
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            border-color: rgba(255,69,0,0.5); box-shadow: 0 8px 25px rgba(255,69,0,0.2);
+            color: var(--accent);
+        }
+        .contact-icon { width: 24px; height: 24px; }
+
+        /* === UTILITIES & SCROLL ANIMATIONS === */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        .title-reveal { 
+            opacity: 0; transform: translateY(60px); letter-spacing: -4px;
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        .title-reveal.active { opacity: 1; transform: translateY(0); letter-spacing: normal; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* === MOBILE RESPONSIVENESS === */
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: flex; flex-direction: column; position: absolute; 
+                top: 100%; left: 0; width: 100%; background: var(--nav-bg); 
+                padding: 2rem; text-align: center;
+                opacity: 0; visibility: hidden; transform: translateY(-20px);
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .nav-links.active { opacity: 1; visibility: visible; transform: translateY(0); }
+            .menu-btn { display: block; }
+            .about-wrapper { flex-direction: column; text-align: center; }
+            .mission-vision { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="main-nav">
+        <a href="#" class="nav-brand">masutamat</a>
+        <div class="menu-btn" id="menu-btn">☰</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#film">Film</a></li>
+            <li><a href="#video-edit">Video Edit</a></li>
+            <li><a href="#videography">Videography</a></li>
+            <li><a href="#about">About</a></li>
+            <!-- New Contact Trigger -->
+            <li><a href="#" onclick="openModal('contact-modal'); return false;" style="color: var(--accent);">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- WRAPPER -->
+    <div class="page-wrapper">
+        
+        <!-- HERO SECTION -->
+        <header class="hero">
+            <video class="hero-video" autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/663201cb75b57888effc63dd_header_video-poster-00001.jpg">
+                <source src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/663201cb75b57888effc63dd_header_video-transcode.mp4" type="video/mp4">
+            </video>
+            
+            <div class="hero-content">
+                <img src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/662dbfd215b645c24d07543f_logo_MM_2.png" alt="MM Logo" class="hero-logo">
+                <h1>Uncover Through Limitless of Possibilities.</h1>
+                <p>Hi, I am <strong>Matthew Job</strong> a.k.a <strong>masutamat</strong>. A filmmaker, video editor, and digital creator.<br>Please scroll down to see my works!</p>
+                
+                <!-- Updated Buttons -->
+                <div class="hero-actions">
+                    <a href="#film" class="btn">Explore Portfolio</a>
+                    <button onclick="openModal('showreel-modal')" class="btn-glass">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:8px;">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        Watch Showreel
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- FILMMAKING SECTION -->
+        <section id="film" class="section">
+            <h1 class="section-title title-reveal">Filmmaking & Cinematography</h1>
+
+            <div class="featured-film reveal">
+                <img src="https://scontent.fmnl4-4.fna.fbcdn.net/v/t39.30808-6/703880538_1430569985755338_2009786380869621475_n.jpg?stp=dst-jpg_tt6&cstp=mx1382x2048&ctp=s1382x2048&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFaExaL_JPR9z38toEd4h_JctvBwT9eTlRy28HBP15OVOMZNFa9FNubk6-pX1MK2T2qz9wDWHGBzcCyTllXpg7r&_nc_ohc=Y-U_O39uTJwQ7kNvwHHdVhn&_nc_oc=Ado_m_IpqIr1b6dLLV72FJd082c6sjajIgM-sYFhio4t-vqlcRk0lKec7SxNHSCz1eMAg0BIEG-xVhynYIOd9lK3&_nc_zt=23&_nc_ht=scontent.fmnl4-4.fna&_nc_gid=Ej9Y5ipWmJqUYrqiStQS5g&_nc_ss=7b2a8&oh=00_AQDG3Rtji7WEm1PgH0ZsPThXG2_OL2A-LOwu4UF9TRf6tw&oe=6A5DD6C4" alt="Samuel's Days">
+                <div class="featured-info">
+                    <h2>Samuel's Days (2026)</h2>
+                    <span class="award">CineSTIval 2026 | Best Picture, Best Cinematography, Best Original Screenplay, Best Film Editing, Best Production Design, and Best Casting</span>
+                    <p><strong>Co-director / Cinematographer / Film Editor / Colorist:</strong> Matthew Job Estacio (masutamat)</p>
+                    <button class="btn-small toggle-stills" onclick="toggleDropdown('samuel-stills', this)">View Stills <span class="toggle-icon">▾</span></button>
+                </div>
+                
+                <div id="samuel-stills" class="stills-wrapper">
+                    <div class="stills-inner">
+                        <div class="slideshow-viewport">
+                            <div class="slideshow-track" id="track-samuel-stills">
+                                <div class="slide">
+                                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1200&auto=format&fit=crop" alt="Still 1"></div>
+                                <div class="slide">
+                                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop" alt="Still 2"></div>
+                                <div class="slide">
+                                    <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1200&auto=format&fit=crop" alt="Still 3"></div>
+                            </div>
+                            <a class="prev" onclick="moveSlide(-1, 'samuel-stills')">❮</a>
+                            <a class="next" onclick="moveSlide(1, 'samuel-stills')">❯</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-film reveal">
+                <img src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/692da5c1c1ad0cbab032f516_Zenith%20Production.png" alt="Dito at Doon">
+                <div class="featured-info">
+                    <h2>Dito at Doon (2025)</h2>
+                    <span class="award">Director's Cut 2025 | 1st Place Locals Champion & 4th Runner-up Nationals</span>
+                    <p><strong>Cinematographer / Film Editor / Colorist:</strong> Matthew Job Estacio (masutamat)</p>
+                    <button class="btn-small toggle-stills" onclick="toggleDropdown('dito-stills', this)">View Stills <span class="toggle-icon">▾</span></button>
+                </div>
+                
+                <div id="dito-stills" class="stills-wrapper">
+                    <div class="stills-inner">
+                        <div class="slideshow-viewport">
+                            <div class="slideshow-track" id="track-dito-stills">
+                                <div class="slide"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1200&auto=format&fit=crop" alt="Still 1"></div>
+                                <div class="slide"><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop" alt="Still 2"></div>
+                                <div class="slide"><img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1200&auto=format&fit=crop" alt="Still 3"></div>
+                            </div>
+                            <a class="prev" onclick="moveSlide(-1, 'dito-stills')">❮</a>
+                            <a class="next" onclick="moveSlide(1, 'dito-stills')">❯</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-film reveal">
+                <img src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/68224b1494e8250930c92d60_462553451_1210773636665501_7296847046707483915_n.png" alt="PABAON">
+                <div class="featured-info">
+                    <h2>PABAON (2024)</h2>
+                    <span class="award">MMFF x FDCP Student Short Film Competition | Finalist</span>
+                    <p><strong>Camera Operator:</strong> Matthew Job Estacio (masutamat)</p>
+                    <button class="btn-small toggle-stills" onclick="toggleDropdown('pabaon-stills', this)">View Stills <span class="toggle-icon">▾</span></button>
+                </div>
+
+                <div id="pabaon-stills" class="stills-wrapper">
+                    <div class="stills-inner">
+                        <div class="slideshow-viewport">
+                            <div class="slideshow-track" id="track-pabaon-stills">
+                                <div class="slide"><img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1200&auto=format&fit=crop" alt="Still 1"></div>
+                                <div class="slide"><img src="https://images.unsplash.com/photo-1578885136359-16c8bd4d3a8e?q=80&w=1200&auto=format&fit=crop" alt="Still 2"></div>
+                            </div>
+                            <a class="prev" onclick="moveSlide(-1, 'pabaon-stills')">❮</a>
+                            <a class="next" onclick="moveSlide(1, 'pabaon-stills')">❯</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="featured-film reveal">
+                <img src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/686e9c0923a7f380e97d84a8_Aninag%20with%20award.png" alt="ANINAG">
+                <div class="featured-info">
+                    <h2>ANINAG (2025)</h2>
+                    <span class="award">Arts & Sciences Film Festival 2025 | Best Film Editing</span>
+                    <p><strong>Co-director / Cinematographer / Film Editor / Colorist:</strong> Matthew Job Estacio (masutamat)</p>
+                    <button class="btn-small toggle-stills" onclick="toggleDropdown('aninag-stills', this)">View Stills <span class="toggle-icon">▾</span></button>
+                </div>
+
+                <div id="aninag-stills" class="stills-wrapper">
+                    <div class="stills-inner">
+                        <div class="slideshow-viewport">
+                            <div class="slideshow-track" id="track-aninag-stills">
+                                <div class="slide"><img src="https://images.unsplash.com/photo-1594908900066-3f47337549d8?q=80&w=1200&auto=format&fit=crop" alt="Still 1"></div>
+                                <div class="slide"><img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200&auto=format&fit=crop" alt="Still 2"></div>
+                            </div>
+                            <a class="prev" onclick="moveSlide(-1, 'aninag-stills')">❮</a>
+                            <a class="next" onclick="moveSlide(1, 'aninag-stills')">❯</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-grid reveal">
+                 <div class="video-card">
+                    <img src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/6677ae46f6f92025e6548076_Screenshot%202024-06-23%20131000.png" alt="Anino">
+                    <div class="video-info">
+                        <h3>Anino</h3>
+                        <a href="https://youtu.be/gYuYZpp2Oo8" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <img src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/6633141c0db739427e04ddec_Screenshot%202024-03-22%20220326.png" alt="Bagaya">
+                    <div class="video-info">
+                        <h3>BAGAYA Bag Commercial</h3>
+                        <a href="https://youtu.be/RIlB5rtvMnE" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F68e76e671846ebbc5b07f96d_Liminality%20-%20Short%20Film%20-%201080_1-poster-00001.jpg">
+                        <source src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F68e76e671846ebbc5b07f96d_Liminality%20-%20Short%20Film%20-%201080_1-transcode.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Liminality - Short Film</h3>
+                        <a href="https://www.youtube.com/watch?v=-AtO92bDmu0" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- VIDEO EDITING SECTION -->
+        <section id="video-edit" class="section">
+            <h1 class="section-title title-reveal">Video Editing & Motion Graphics</h1>
+            
+            <div class="video-grid reveal">
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936f5cb03de6304163e289e_0082_1_poster.0000000.jpg">
+                        <source src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936f5cb03de6304163e289e_0082_1_mp4.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>90 Day Revenue Challenge</h3>
+                        <a href="https://drive.google.com/file/d/1qnxWeR4fnxGo_PoDP9i6KInuoskC4kWV/view?usp=sharing" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F68225f2c7f0176c44495ae8f_The%20Fraternity%20Office%20Hours%20Ads-poster-00001.jpg">
+                        <source src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F68225f2c7f0176c44495ae8f_The%20Fraternity%20Office%20Hours%20Ads-transcode.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Office Hours - William Stern</h3>
+                        <a href="https://drive.google.com/file/d/1RaaUUGwPeyW1lyKtUTw1llUKx0SPICsM/view?usp=drive_link" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="videos/manyreach_ad.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Manyreach Advertisement</h3>
+                        <a href="https://drive.google.com/file/d/1gM8jzvXD4HV2uWzxNof5m8HOnzf4J5Tv/view?usp=share_link" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="videos/dsh_richmond.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Digital Social Hour</h3>
+                        <a href="https://drive.google.com/file/d/1t0-nswFfN19u36b22zFQ7vhpBPdVvc80/view?usp=sharing" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="videos/cactus_recruitment.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Cactus Recruitment</h3>
+                        <a href="https://drive.google.com/file/d/1FkUY_AkG7xAETG4lkxDH3D6AVVPUlPXZ/view?usp=sharing" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="videos/finestfive_0114.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Finest Five Video Project</h3>
+                        <a href="https://drive.google.com/file/d/15mQGwlEVEWkTvRy4EmyI2v1WQXKt45CI/view?usp=share_link" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIDEOGRAPHY SECTION -->
+        <section id="videography" class="section">
+            <h1 class="section-title title-reveal">Videography & Content Creation</h1>
+            
+            <div class="video-grid reveal" style="margin-bottom: 2rem;">
+                <div class="video-card">
+                    <img src="https://images.unsplash.com/photo-1528114039593-4366cc08227d?q=80&w=1200&auto=format&fit=crop" alt="Videography Project">
+                    <div class="video-info">
+                        <h3>Event Coverage (Placeholder)</h3>
+                        <a href="#" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=1200&auto=format&fit=crop" alt="Documentary Project">
+                    <div class="video-info">
+                        <h3>Documentary (Placeholder)</h3>
+                        <a href="#" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <video autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_poster.0000000.jpg">
+                        <source src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44%2F6936faafe9d0e5d2a855c243_Anker%20Soundcore%20Liberty%205_mp4.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-info">
+                        <h3>Anker Soundcore Liberty 5 (Short)</h3>
+                        <a href="https://www.tiktok.com/@masutamat" target="_blank" class="btn-small">Watch Here</a>
+                    </div>
+                </div>
+
+            </div>
+            
+
+            <!-- Camera Equipment Dropdown -->
+            <div class="reveal">
+                <button class="btn-small toggle-stills" onclick="toggleDropdown('gear-dropdown', this)" style="margin-bottom: 1rem;">
+                    View Camera Gear <span class="toggle-icon">▾</span>
+                </button>
+                
+                <div id="gear-dropdown" class="stills-wrapper">
+                    <div class="stills-inner">
+                        <div class="gear-list">
+                            <div class="gear-item">
+                                <h3>Camera Body</h3>
+                                <p>Sony ZVE-10 II</p>
+                            </div>
+                            <div class="gear-item">
+                                <h3>Lenses</h3>
+                                <p>7Artisans 35mm T2.1 HOPE Cine Lens</p>
+                            </div>
+                            <div class="gear-item">
+                                <h3>Lighting</h3>
+                                <p>TBA</p>
+                            </div>
+                            <div class="gear-item">
+                                <h3>Microphones</h3>
+                                <p>TBA</p>
+                            </div>
+                            <div class="gear-item">
+                                <h3>Gimbal</h3>
+                                <p>DJI RS 3 Mini</p>
+                            </div>
+                            <div class="gear-item">
+                                <h3>Miscellaneous</h3>
+                                <p>TBA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section">
+            <h1 class="section-title title-reveal">About Me</h1>
+            
+            <div class="about-wrapper reveal">
+                <img src="https://cdn.prod.website-files.com/662dac449b6ff2a1d922ab44/6859a496e282973d81563b65_DSC01979-2.JPG" alt="Matthew Job">
+                <div class="about-text">
+                    <p>Hi, Im <strong>Matthew Job,</strong> or you may call me <strong>masutamat</strong>. I am a student who makes digital creative like photography, filmmaking, digital illustrations, motion graphics, and graphic designing.</p>
+                    <p>I am passionate about digital arts, especially when it comes to photography, filmmaking, and illustration. It captivates me to make art that tells stories and memories. Also, it is fun to make some cool things.</p>
+                    <p>Feel free to contact me whenever you want at <a href="mailto:matthewjobmendoza09@gmail.com" style="color: var(--accent); text-decoration: underline;">matthewjobmendoza09@gmail.com</a></p>
+                    <br>
+                    <a href="https://ortigascaintasti-my.sharepoint.com/:b:/g/personal/estacio_125103_ortigas-cainta_sti_edu_ph/IQBvQek4E-vSSLYq69nuU9JTAak3zebpQjf7TV5IkYWzDGg?e=FxS9Wi" target="_blank" class="btn">Download Resume</a>
+                </div>
+            </div>
+
+            <div class="mission-vision reveal">
+                <div>
+                    <h3>Mission</h3>
+                    <p>To capture the essence and value of traversing the dimension of digital nomads. Highlighting the world of freedom in the expression of visualization and taking a moment to understand what beholds that only exists in the imagination.</p>
+                </div>
+                <div>
+                    <h3>Vision</h3>
+                    <p>A never-ending change of augmentation, to feel and sensation of one’s understanding. A creative process that is solely accessible in other’s imagination, but to understand and perceive that imitates an individual’s ought.</p>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- /PAGE WRAPPER -->
+    
+    <!-- === MODALS === -->
+    
+    <!-- Showreel Modal -->
+    <div id="showreel-modal" class="modal-overlay" onclick="closeModal(event, 'showreel-modal')">
+        <div class="modal-content showreel-content">
+            <button class="close-modal" onclick="closeModal(event, 'showreel-modal', true)">✕</button>
+            <iframe id="showreel-iframe" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay" onclick="closeModal(event, 'contact-modal')">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal(event, 'contact-modal', true)">✕</button>
+            <h2 style="margin-bottom: 2rem; text-align: center; font-weight: 800; font-size: 2rem;">Let's Connect</h2>
+            <div class="contact-grid">
+                
+                <a href="https://facebook.com/matthewjob" target="_blank" class="contact-btn">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                    Facebook
+                </a>
+                
+                <a href="https://instagram.com/masutamat" target="_blank" class="contact-btn">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    Instagram
+                </a>
+                
+                <a href="https://tiktok.com/@masutamat" target="_blank" class="contact-btn">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                    </svg>
+                    TikTok
+                </a>
+                
+                <a href="mailto:matthewjobmendoza09@gmail.com" class="contact-btn">
+                    <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Email Me
+                </a>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- JS FOR INTERACTIONS -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        
+        menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => { navLinks.classList.remove('active'); });
+        });
+
+        // 2. Standard Scroll Animations
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        reveals.forEach(reveal => revealOnScroll.observe(reveal));
+
+        // 3. Dynamic Title Scroll Animations
+        const titleReveals = document.querySelectorAll('.title-reveal');
+        const titleObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) { entry.target.classList.add('active'); } 
+                else { entry.target.classList.remove('active'); }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -100px 0px" });
+        titleReveals.forEach(title => titleObserver.observe(title));
+
+        // 4. Universal Accordion & Slideshow Logic
+        let slideState = {}; 
+
+        function toggleDropdown(id, btnElement) {
+            const wrapper = document.getElementById(id);
+            wrapper.classList.toggle('active');
+            btnElement.classList.toggle('active-btn');
+            
+            const track = document.getElementById('track-' + id);
+            if(track && wrapper.classList.contains('active') && slideState[id] === undefined) {
+                slideState[id] = 0; updateSlidePosition(id);
+            }
+        }
+
+        function moveSlide(direction, id) {
+            const track = document.getElementById('track-' + id);
+            if (!track) return;
+            const slides = track.getElementsByClassName("slide");
+            const totalSlides = slides.length;
+            if (totalSlides === 0) return;
+
+            slideState[id] += direction;
+            if (slideState[id] >= totalSlides) { slideState[id] = 0; } 
+            else if (slideState[id] < 0) { slideState[id] = totalSlides - 1; }
+            updateSlidePosition(id);
+        }
+
+        function updateSlidePosition(id) {
+            const track = document.getElementById('track-' + id);
+            if (!track) return;
+            const currentIndex = slideState[id];
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        // 5. Smart Navbar
+        let lastScrollY = window.scrollY;
+        const navbar = document.getElementById('main-nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY <= 50) { navbar.classList.remove('nav-hidden'); } 
+            else if (currentScrollY > lastScrollY) { navbar.classList.add('nav-hidden'); } 
+            else { navbar.classList.remove('nav-hidden'); }
+            lastScrollY = currentScrollY;
+        });
+
+        // 6. Custom Bezier Curve Smooth Scrolling 
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (!targetElement) return;
+
+                e.preventDefault(); 
+                const startPosition = window.pageYOffset;
+                const offset = 80; 
+                const targetPosition = targetElement.getBoundingClientRect().top + startPosition - offset;
+                const distance = targetPosition - startPosition;
+                const duration = 1500; 
+                let start = null;
+
+                function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+                function animation(currentTime) {
+                    if (start === null) start = currentTime;
+                    const timeElapsed = currentTime - start;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    const easeProgress = easeOutExpo(progress);
+                    window.scrollTo(0, startPosition + distance * easeProgress);
+                    if (timeElapsed < duration) { requestAnimationFrame(animation); }
+                }
+
+                requestAnimationFrame(animation);
+                if (navLinks.classList.contains('active')) { navLinks.classList.remove('active'); }
+            });
+        });
+
+        // 7. Modal Logic
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        function closeModal(e, id, force = false) {
+            // Close if 'X' is clicked OR if user clicks outside the modal content (on the overlay)
+            if (force || e.target.id === id) {
+                document.getElementById(id).classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+                
+                // Pause YouTube video automatically when closing
+                if (id === 'showreel-modal') {
+                    const iframe = document.getElementById('showreel-iframe');
+                    if(iframe) {
+                        let src = iframe.src;
+                        iframe.src = src; // Resetting src stops playback
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
